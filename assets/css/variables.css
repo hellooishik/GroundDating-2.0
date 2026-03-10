@@ -1,0 +1,71 @@
+:root {
+    /* Primary Colors */
+    --gd-primary: #FF4D6D;
+    --gd-primary-hover: #E63E5C;
+    --gd-primary-light: rgba(255, 77, 109, 0.1);
+
+    /* Secondary Colors */
+    --gd-secondary: #0A192F;
+    --gd-secondary-light: #112240;
+
+    /* Accents */
+    --gd-accent-gold: #D4AF37;
+    --gd-accent-teal: #008080;
+
+    /* Backgrounds */
+    --gd-bg-main: #FAFAFA;
+    --gd-bg-card: #FFFFFF;
+    --gd-bg-subtle: #F0F2F5;
+
+    /* Text */
+    --gd-text-heading: #0A192F;
+    --gd-text-body: #4A5568;
+    --gd-text-muted: #A0AEC0;
+    --gd-text-inverse: #FFFFFF;
+
+    /* Borders */
+    --gd-border-color: #E2E8F0;
+
+    /* Typography */
+    --gd-font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Transitions */
+    --gd-transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Shadows */
+    --gd-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --gd-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --gd-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --gd-shadow-card: 0 8px 30px rgba(10, 25, 47, 0.06);
+    --gd-shadow-glow: 0 0 20px rgba(255, 77, 109, 0.4);
+
+    /* Spacing */
+    --gd-space-1: 0.25rem;
+    --gd-space-2: 0.5rem;
+    --gd-space-3: 0.75rem;
+    --gd-space-4: 1rem;
+    --gd-space-6: 1.5rem;
+    --gd-space-8: 2rem;
+    --gd-space-12: 3rem;
+    --gd-space-16: 4rem;
+    --gd-space-24: 6rem;
+
+    /* Layout */
+    --gd-container-max: 1200px;
+    --gd-header-height: 80px;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+    --gd-bg-main: #0B0E14;
+    --gd-bg-card: #151A23;
+    --gd-bg-subtle: #1C222E;
+
+    --gd-text-heading: #FFFFFF;
+    --gd-text-body: #CBD5E0;
+    --gd-text-muted: #718096;
+
+    --gd-border-color: #2D3748;
+
+    --gd-shadow-card: 0 8px 30px rgba(0, 0, 0, 0.5);
+}

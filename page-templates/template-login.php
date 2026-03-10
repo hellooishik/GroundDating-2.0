@@ -1,0 +1,55 @@
+<?php
+/**
+ * Template Name: Login Page
+ *
+ * @package GroundedDating
+ */
+
+// Custom minimal header just for auth routes
+?>
+<!doctype html>
+<html <?php language_attributes(); ?> data-theme="light">
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<?php wp_head(); ?>
+    <style>
+        .gd-auth-layout { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--gd-bg-subtle); padding: var(--gd-space-4); }
+        .gd-auth-card { max-width: 400px; width: 100%; text-align: center; }
+        .gd-auth-logo { font-size: 2rem; color: var(--gd-primary); font-weight: bold; margin-bottom: var(--gd-space-8); display: block; }
+    </style>
+</head>
+
+<body <?php body_class(); ?>>
+
+<main class="gd-auth-layout">
+    <div class="gd-card gd-auth-card gd-fade-in">
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="gd-auth-logo"><?php bloginfo('name'); ?></a>
+        <h2>Welcome Back</h2>
+        <p class="text-muted" style="margin-bottom: var(--gd-space-6);">Log in to continue building connections.</p>
+        
+        <form class="gd-auth-form d-flex flex-col gap-4 text-left">
+            <div>
+                <label for="user_login" class="gd-label" style="display:block; margin-bottom: 8px;">Email or Username</label>
+                <input type="text" id="user_login" class="gd-input" style="width:100%; padding: 12px; border: 1px solid var(--gd-border-color); border-radius: 8px; background: var(--gd-bg-main); color: var(--gd-text-body);">
+            </div>
+            <div>
+                <label for="user_pass" class="gd-label" style="display:flex; justify-content: space-between; margin-bottom: 8px;">
+                    Password 
+                    <a href="<?php echo esc_url(wp_lostpassword_url()); ?>" class="text-primary" style="font-size: 0.85rem;">Forgot?</a>
+                </label>
+                <input type="password" id="user_pass" class="gd-input" style="width:100%; padding: 12px; border: 1px solid var(--gd-border-color); border-radius: 8px; background: var(--gd-bg-main); color: var(--gd-text-body);">
+            </div>
+            
+            <button type="submit" class="gd-btn gd-btn-primary" style="width: 100%; margin-top: 8px;">Log In</button>
+            
+            <p class="text-center" style="margin-top: var(--gd-space-4); font-size: 0.9rem;">
+                Don't have an account? <a href="<?php echo esc_url( wp_registration_url() ); ?>">Join Now</a>
+            </p>
+        </form>
+    </div>
+</main>
+
+<?php wp_footer(); ?>
+</body>
+</html>
