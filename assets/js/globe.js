@@ -23,13 +23,20 @@ document.addEventListener('DOMContentLoaded', () => {
         0.1,
         1000
     );
-    camera.position.z = 2.5;
+    camera.position.z = 3.5; // Moved back to prevent clipping/octagon effect
 
     // 3. Renderer Setup
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setSize(container.clientWidth, container.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     container.appendChild(renderer.domElement);
+
+    // Add Lighting so the sphere looks 3D instead of flat!
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(5, 3, 5);
+    scene.add(directionalLight);
 
     // 4. Globe Geometry and Material Setup
     const radius = 1;
@@ -40,11 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const group = new THREE.Group();
     scene.add(group);
 
-    // Creates the underlying dark sphere
-    const sphereMat = new THREE.MeshBasicMaterial({
+    // Creates the underlying dark sphere with 3D shading
+    const sphereMat = new THREE.MeshPhongMaterial({
         color: 0x0A192F, // Navy core
+        emissive: 0x071120, // Slight glow
         transparent: true,
-        opacity: 0.8
+        opacity: 0.9,
+        shininess: 15
     });
     const sphereMesh = new THREE.Mesh(geometry, sphereMat);
     group.add(sphereMesh);
@@ -140,11 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Rotate the entire group (Earth + nodes + lines)
         group.rotation.y += 0.002;
-        group.rotation.x = Math.sin(Date.now() * 0.0005) * 0.1; // Slight tilt wobble
+        group.rotation.x = 0.15; // Set a fixed tilt instead of wobble
 
         // Pulse the connection nodes
         const time = Date.now() * 0.003;
-        nodeMaterial.size = 0.04 + Math.sin(time) * 0.02;
+        nodeMaterial.size = 0.04 + Math.sin(time) * 0.015;
 
         renderer.render(scene, camera);
     }
@@ -169,9 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 const theme = htmlEl.getAttribute('data-theme');
                 if (theme === 'dark') {
                     sphereMat.color.setHex(0x151A23);
+                    sphereMat.emissive.setHex(0x0C0F14);
                     dotMaterial.color.setHex(0x2D3748);
                 } else {
                     sphereMat.color.setHex(0x0A192F);
+                    sphereMat.emissive.setHex(0x071120);
                     dotMaterial.color.setHex(0x4A5568);
                 }
             }
